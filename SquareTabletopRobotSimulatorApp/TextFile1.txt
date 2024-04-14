@@ -1,0 +1,18 @@
+﻿Toy Robot Simulator
+The Toy Robot Simulator is a command-line application that simulates a toy robot moving on a square tabletop. The robot can be placed on the table, moved around, rotated, and its position can be reported.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Features :
+PLACE Command: Place the toy robot on the table in a specified position and facing direction.
+MOVE Command: Move the toy robot one unit forward in the direction it is currently facing.
+LEFT/RIGHT Commands: Rotate the toy robot 90 degrees in the specified direction without changing its position.
+REPORT Command: Display the current position and facing direction of the toy robot.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Getting Started
+Prerequisites
+DOTNET Core SDK installed on your machine.
+
+Installation :
