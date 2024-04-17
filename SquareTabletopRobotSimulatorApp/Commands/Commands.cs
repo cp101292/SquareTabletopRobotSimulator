@@ -1,10 +1,14 @@
 ﻿using SquareTabletopRobotSimulatorApp;
+using SquareTabletopRobotSimulatorApp.Commands.ICommands;
 using SquareTabletopRobotSimulatorApp.Models;
+using SquareTabletopRobotSimulatorApp.UserInteraction.IUserInteraction;
+
+namespace SquareTabletopRobotSimulatorApp.Commands;
 
 public class Commands : ICommand
 {
-    private readonly ICommandUserInteraction _commandUserInteraction;
-    public Commands(ICommandUserInteraction commandUserInteraction)
+    private readonly ICommandUserInteractor _commandUserInteraction;
+    public Commands(ICommandUserInteractor commandUserInteraction)
     {
         _commandUserInteraction = commandUserInteraction;
     }

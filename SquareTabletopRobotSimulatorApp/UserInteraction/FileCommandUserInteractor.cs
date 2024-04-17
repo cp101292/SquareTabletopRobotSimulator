@@ -1,4 +1,7 @@
-﻿public class FileCommandUserInteraction : ICommandUserInteraction
+﻿using SquareTabletopRobotSimulatorApp.UserInteraction.IUserInteraction;
+
+namespace SquareTabletopRobotSimulatorApp.UserInteraction;
+public class FileCommandUserInteractor : ICommandUserInteractor
 {
 
     // Output can be seen to the file bin\Debug\net8.0\output

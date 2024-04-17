@@ -1,12 +1,15 @@
-﻿using SquareTabletopRobotSimulatorApp.Models;
+﻿using SquareTabletopRobotSimulatorApp.Commands.ICommands;
+using SquareTabletopRobotSimulatorApp.Models;
+using SquareTabletopRobotSimulatorApp.UserInteraction.IUserInteraction;
+
 public class RobotSimulatorApp
 {
     private Robot _robot;
     private Tabletop _tabletop;
     private readonly ICommandParser _commandParser;
-    private readonly ICommandUserInteraction _commanUserInteraction;
+    private readonly ICommandUserInteractor _commanUserInteraction;
 
-    public RobotSimulatorApp(Robot robot, Tabletop tabletop, ICommandParser commandParser, ICommandUserInteraction commandUserInteraction)
+    public RobotSimulatorApp(Robot robot, Tabletop tabletop, ICommandParser commandParser, ICommandUserInteractor commandUserInteraction)
     {
         _robot = robot;
         _tabletop = tabletop;

@@ -1,15 +1,17 @@
-﻿using SquareTabletopRobotSimulatorApp.Models;
+﻿using SquareTabletopRobotSimulatorApp.Commands.ICommands;
+using SquareTabletopRobotSimulatorApp.Models;
 
+namespace SquareTabletopRobotSimulatorApp.Commands;
 public class CommandParser : ICommandParser
 {
     private readonly ICommand _command;
-    private readonly CommandValidator _validator;
+    private readonly ICommandValidator _validator;
     private bool isFirstValidCommand = false;
 
-    public CommandParser(ICommand command)
+    public CommandParser(ICommand command, ICommandValidator validator)
     {
         _command = command;
-        _validator = new CommandValidator();
+        _validator = validator;
     }
     public void ParseCommand(string commandString, Robot robot, Tabletop tabletop)
     {

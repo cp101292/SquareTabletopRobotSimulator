@@ -1,5 +1,6 @@
 ﻿using SquareTabletopRobotSimulatorApp.Models;
 
+namespace SquareTabletopRobotSimulatorApp.Commands.ICommands;
 public interface ICommand
 {
     void PlaceRobot(string[] parameters, Robot robot, Tabletop tabletop);

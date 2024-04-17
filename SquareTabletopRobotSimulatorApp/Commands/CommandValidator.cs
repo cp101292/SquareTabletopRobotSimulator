@@ -1,4 +1,8 @@
-﻿public class CommandValidator
+﻿using SquareTabletopRobotSimulatorApp.Commands.ICommands;
+
+namespace SquareTabletopRobotSimulatorApp.Commands;
+
+public class CommandValidator : ICommandValidator
 {
     public bool IsPlaceCommand(string command)
     {
