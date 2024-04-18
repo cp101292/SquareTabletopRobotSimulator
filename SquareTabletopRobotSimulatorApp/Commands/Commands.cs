@@ -12,6 +12,7 @@ public class Commands : ICommand
     {
         _commandUserInteraction = commandUserInteraction;
     }
+
     public void PlaceRobot(string parameters, Robot robot, Tabletop tabletop)
     {
         string[] parameterArray = parameters.Split(',');

@@ -3,18 +3,26 @@ using SquareTabletopRobotSimulatorApp;
 using SquareTabletopRobotSimulatorApp.Commands;
 using SquareTabletopRobotSimulatorApp.Models;
 using SquareTabletopRobotSimulatorApp.UserInteraction;
+using SquareTabletopRobotSimulatorApp.UserInteraction.IUserInteraction;
 
-var commands = new Commands(new FileCommandUserInteractor());
+const string outputFileName = "output.txt";
+const string commandInputFileName = "CommandInputFile\\command.txt";
+
+string outputFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,outputFileName );
+string commandFilePath = Path.Combine(Directory.GetCurrentDirectory(), commandInputFileName);
+
+ICommandUserInteractor fileCommandUserInteractor = new FileCommandUserInteractor(outputFolderPath, commandFilePath);
+
+var commands = new Commands(fileCommandUserInteractor);
 var tableTop = new Tabletop();
 var commandParser = new CommandParser(commands, new CommandValidator());
-var fileCommandUserInterface = new FileCommandUserInteractor();
 
 
 //An entry point of the application.
 RobotSimulatorApp robotSimulator = new RobotSimulatorApp(new Robot(),
     tableTop,
     commandParser,
-    fileCommandUserInterface);
+    fileCommandUserInteractor);
 
 robotSimulator.StartSimulation();
 

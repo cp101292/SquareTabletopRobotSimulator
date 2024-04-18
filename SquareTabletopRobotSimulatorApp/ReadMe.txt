@@ -37,4 +37,4 @@ REPORT
 Note : example is provided in the already available command.txt file in project.
 
 5. Run the application, Output will be generated and written to a text file called output.txt, path will be as below.
-- SquareTabletopRobotSimulator\SquareTabletopRobotSimulatorApp\bin\Debug\net8.0\output
+- SquareTabletopRobotSimulator\SquareTabletopRobotSimulatorApp\bin\Debug\net8.0\
