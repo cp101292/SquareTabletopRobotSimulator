@@ -6,7 +6,7 @@ public class CommandParser : ICommandParser
 {
     private readonly ICommand _command;
     private readonly ICommandValidator _validator;
-    private bool isFirstValidCommand = false;
+    public bool IsFirstValidCommand = false;
 
     public CommandParser(ICommand command, ICommandValidator validator)
     {
@@ -15,26 +15,38 @@ public class CommandParser : ICommandParser
     }
     public void ParseCommand(string commandString, Robot robot, Tabletop tabletop)
     {
-        string[] parts = commandString.Trim().Split(' ');
-        string action = parts[0];
-
-
-        if (!isFirstValidCommand && !_validator.IsPlaceCommand(action))
+        if (string.IsNullOrEmpty(commandString))
         {
-            // Ignore commands until a valid PLACE command is encountered
+            throw new ArgumentNullException(nameof(commandString));
+        }
+
+        var parts = commandString.Trim().Split(' ');
+        var action = parts[0];
+
+        if (!_validator.IsValidCommandAction(action))
+        {
+            throw new ArgumentException("Invalid command: " + action);
+        }
+
+        if (!IsFirstValidCommand && !_validator.IsPlaceCommand(action))
+        {
             return;
         }
 
-        if (!isFirstValidCommand)
+        if (!IsFirstValidCommand)
         {
-            isFirstValidCommand = true;
+            IsFirstValidCommand = true;
         }
 
 
         switch (action)
         {
             case "PLACE":
-                _command.PlaceRobot(parts, robot, tabletop);
+                if (string.IsNullOrEmpty(parts[1]) || !_validator.IsPlaceCommandHasValidArguments(parts[1]))
+                {
+                    throw new ArgumentException("Invalid PLACE command: " + commandString);
+                }
+                _command.PlaceRobot(parts[1], robot, tabletop);
                 break;
 
             case "MOVE":

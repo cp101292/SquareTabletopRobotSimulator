@@ -2,5 +2,8 @@
 
 public interface ICommandValidator
 {
-    public bool IsPlaceCommand(string command);
+    bool IsPlaceCommand(string command);
+    bool IsValidCommandAction(string action);
+
+    bool IsPlaceCommandHasValidArguments(string argumentString);
 }

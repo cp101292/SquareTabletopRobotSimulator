@@ -12,21 +12,18 @@ public class Commands : ICommand
     {
         _commandUserInteraction = commandUserInteraction;
     }
-    public void PlaceRobot(string[] parameters, Robot robot, Tabletop tabletop)
+    public void PlaceRobot(string parameters, Robot robot, Tabletop tabletop)
     {
-        if (parameters.Length == 2)
+        string[] parameterArray = parameters.Split(',');
+        if (parameterArray.Length == 3 &&
+            int.TryParse(parameterArray[0], out int x) &&
+            int.TryParse(parameterArray[1], out int y) &&
+            Enum.TryParse(parameterArray[2], out Direction facing) &&
+            tabletop.IsValidPosition(x, y))
         {
-            string[] coords = parameters[1].Split(',');
-            if (coords.Length == 3 &&
-                int.TryParse(coords[0], out int x) &&
-                int.TryParse(coords[1], out int y) &&
-                Enum.TryParse(coords[2], out Direction facing) &&
-                tabletop.IsValidPosition(x, y))
-            {
-                robot.X = x;
-                robot.Y = y;
-                robot.Facing = facing;
-            }
+            robot.X = x;
+            robot.Y = y;
+            robot.Facing = facing;
         }
     }
 
