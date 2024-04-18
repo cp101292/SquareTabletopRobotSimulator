@@ -24,7 +24,23 @@ RobotSimulatorApp robotSimulator = new RobotSimulatorApp(new Robot(),
     commandParser,
     fileCommandUserInteractor);
 
-robotSimulator.StartSimulation();
+
+try
+{
+    robotSimulator.StartSimulation();
+}
+catch (ArgumentNullException e)
+{
+    Console.WriteLine(e.Message);
+}
+catch (ArgumentException e)
+{
+    Console.WriteLine(e.Message);
+}
+catch (Exception e)
+{
+    Console.WriteLine(e.Message);
+}
 
 Console.WriteLine("Execution completed {press any key to exit}");
 Console.ReadKey();

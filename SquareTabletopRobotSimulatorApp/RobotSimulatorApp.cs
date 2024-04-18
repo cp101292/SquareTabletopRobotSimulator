@@ -19,14 +19,30 @@ public class RobotSimulatorApp
 
     public void StartSimulation()
     {
-        // Read input commands and execute them
-        var commands = _commanUserInteraction.ReadCommandsFromUser();
-
-        //Parse and process the command one by one
-        foreach (string command in commands)
+        try
         {
-            _commandParser.ParseCommand(command, _robot, _tabletop);
+            // Read input commands and execute them
+            var commands = _commanUserInteraction.ReadCommandsFromUser();
+
+            //Parse and process the command one by one
+            foreach (string command in commands)
+            {
+                _commandParser.ParseCommand(command, _robot, _tabletop);
+            }
         }
+        catch (ArgumentNullException)
+        {
+            throw;
+        }
+        catch (ArgumentException)
+        {
+            throw;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+       
     }
 
 }
